@@ -1,16 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
 import App from '../App';
-import Compra from '../pages/compra/Compra';
-import Tareas from '../pages/tareas/Tareas';
-import Citas from '../pages/citas/Citas';
+import Purchase from '../pages/Purchase'
+import Tasks from '../pages/Tasks'
+import Appointments from '../pages/Appointments'
 
 export default function WebRoutes() {
     return (
         <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/compra" element={<Compra />} />
-            <Route path="/tareas" element={<Tareas />} />
-            <Route path="/citas" element={<Citas />} />
+            <Route path="/compra" element={<Purchase />} />
+            <Route path="/tareas" element={<Tasks />} />
+            <Route path="/citas" element={<Appointments />} />
         </Routes>
     );
 }
