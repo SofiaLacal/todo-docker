@@ -1,25 +1,23 @@
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <h1>Bienvenido a la lista de tareas</h1>
+      <h2>Autores: Pablo Herrero, Javier Monzón, Sofía Lacal</h2>
+      <div className="contenedor-principal">
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Entra al enlace para acceder a las diferentes listas
         </p>
+        <div className='contenedor-enlaces'>
+          <p className='enlace'>Enlace 1</p>
+          <p className='enlace'>Enlace 2</p>
+          <p className='enlace'>Enlace 3</p>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
