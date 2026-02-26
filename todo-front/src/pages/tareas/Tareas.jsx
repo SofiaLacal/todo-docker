@@ -17,8 +17,10 @@ const Tareas = () => {
             const response = await fetch(`${API_URL}/tareas`);
             const data = await response.json();
             setTareas(data);
+
         } catch (err) {
             setError(err);
+
         } finally {
             setLoading(false);
         }
@@ -46,6 +48,7 @@ const Tareas = () => {
             setPrioridad('media');
             setFechaLimite('');
             fetchTareas();
+
         } catch (err) {
             setError(err);
         }
@@ -59,6 +62,7 @@ const Tareas = () => {
                 body: JSON.stringify({ completada: !tarea.completada }),
             });
             fetchTareas();
+
         } catch (err) {
             setError(err);
         }
@@ -68,6 +72,7 @@ const Tareas = () => {
         try {
             await fetch(`${API_URL}/tareas/${id}`, { method: 'DELETE' });
             fetchTareas();
+            
         } catch (err) {
             setError(err);
         }

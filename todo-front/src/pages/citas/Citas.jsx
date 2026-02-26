@@ -19,8 +19,10 @@ const Citas = () => {
             const response = await fetch(`${API_URL}/citas-medicas`);
             const data = await response.json();
             setCitas(data);
+
         } catch (err) {
             setError(err);
+
         } finally {
             setLoading(false);
         }
@@ -52,6 +54,7 @@ const Citas = () => {
             setLugar('');
             setNotas('');
             fetchCitas();
+
         } catch (err) {
             setError(err);
         }
@@ -65,6 +68,7 @@ const Citas = () => {
                 body: JSON.stringify({ completada: !cita.completada }),
             });
             fetchCitas();
+
         } catch (err) {
             setError(err);
         }
@@ -74,6 +78,7 @@ const Citas = () => {
         try {
             await fetch(`${API_URL}/citas-medicas/${id}`, { method: 'DELETE' });
             fetchCitas();
+            
         } catch (err) {
             setError(err);
         }

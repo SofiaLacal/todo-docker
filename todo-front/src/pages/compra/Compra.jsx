@@ -18,8 +18,10 @@ const Compra = () => {
             const response = await fetch(`${API_URL}/compras`);
             const data = await response.json();
             setCompras(data);
+
         } catch (err) {
             setError(err);
+
         } finally {
             setLoading(false);
         }
@@ -49,6 +51,7 @@ const Compra = () => {
             setCantidad('1');
             setCategoria('general');
             fetchCompras();
+
         } catch (err) {
             setError(err);
         }
@@ -62,6 +65,7 @@ const Compra = () => {
                 body: JSON.stringify({ completada: !compra.completada }),
             });
             fetchCompras();
+
         } catch (err) {
             setError(err);
         }
@@ -71,6 +75,7 @@ const Compra = () => {
         try {
             await fetch(`${API_URL}/compras/${id}`, { method: 'DELETE' });
             fetchCompras();
+            
         } catch (err) {
             setError(err);
         }
