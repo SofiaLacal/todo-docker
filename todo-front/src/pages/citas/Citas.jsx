@@ -78,7 +78,7 @@ const Citas = () => {
         try {
             await fetch(`${API_URL}/citas-medicas/${id}`, { method: 'DELETE' });
             fetchCitas();
-            
+
         } catch (err) {
             setError(err);
         }
@@ -141,7 +141,7 @@ const Citas = () => {
                 />
                 <input
                     type="text"
-                    placeholder="Lugar / Consultorio"
+                    placeholder="Lugar"
                     value={lugar}
                     onChange={(e) => setLugar(e.target.value)}
                 />

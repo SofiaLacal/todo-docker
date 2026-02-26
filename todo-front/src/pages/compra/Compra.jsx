@@ -9,7 +9,6 @@ const Compra = () => {
     const [error, setError] = useState(null);
     const [titulo, setTitulo] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [precio, setPrecio] = useState('');
     const [cantidad, setCantidad] = useState('1');
     const [categoria, setCategoria] = useState('general');
 
@@ -40,14 +39,12 @@ const Compra = () => {
                 body: JSON.stringify({
                     titulo,
                     descripcion,
-                    precio: Number(precio),
                     cantidad: Number(cantidad) || 1,
                     categoria,
                 }),
             });
             setTitulo('');
             setDescripcion('');
-            setPrecio('');
             setCantidad('1');
             setCategoria('general');
             fetchCompras();
@@ -75,7 +72,7 @@ const Compra = () => {
         try {
             await fetch(`${API_URL}/compras/${id}`, { method: 'DELETE' });
             fetchCompras();
-            
+
         } catch (err) {
             setError(err);
         }
@@ -101,7 +98,7 @@ const Compra = () => {
                             <strong>{compra.titulo}</strong>
                             {compra.descripcion && <p>{compra.descripcion}</p>}
                             <span>
-                                {compra.precio}€ x {compra.cantidad} | {compra.categoria}
+                                {compra.cantidad} | {compra.categoria}
                             </span>
                         </div>
                         <button onClick={() => handleDeleteCompra(compra._id)}>Eliminar</button>
@@ -122,14 +119,6 @@ const Compra = () => {
                     placeholder="Descripción"
                     value={descripcion}
                     onChange={(e) => setDescripcion(e.target.value)}
-                />
-                <input
-                    type="number"
-                    step="0.01"
-                    placeholder="Precio"
-                    value={precio}
-                    onChange={(e) => setPrecio(e.target.value)}
-                    required
                 />
                 <input
                     type="number"
