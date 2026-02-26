@@ -9,9 +9,8 @@ const Compra = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [titulo, setTitulo] = useState('');
-    const [descripcion, setDescripcion] = useState('');
     const [cantidad, setCantidad] = useState('1');
-    const [categoria, setCategoria] = useState('general');
+    const [categoria, setCategoria] = useState('Categoría');
 
     const fetchCompras = async () => {
         try {
@@ -39,15 +38,13 @@ const Compra = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     titulo,
-                    descripcion,
                     cantidad: Number(cantidad) || 1,
                     categoria,
                 }),
             });
             setTitulo('');
-            setDescripcion('');
             setCantidad('1');
-            setCategoria('general');
+            setCategoria('Categoría');
             fetchCompras();
 
         } catch (err) {
@@ -114,12 +111,6 @@ const Compra = () => {
                     value={titulo}
                     onChange={(e) => setTitulo(e.target.value)}
                     required
-                />
-                <input
-                    type="text"
-                    placeholder="Descripción"
-                    value={descripcion}
-                    onChange={(e) => setDescripcion(e.target.value)}
                 />
                 <input
                     type="number"
