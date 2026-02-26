@@ -2,10 +2,12 @@ FROM node:8
 
 LABEL maintainer=""
 
-RUN npm install 
+WORKDIR /app
 
-ADD archivos /rutaarchivo 
+ADD . /app
+
+RUN npm install 
 
 EXPOSE 8889
 
-ENTRYPOINT ["node", "nombrearchivo.js"]
+ENTRYPOINT ["node", "src/index.js"]

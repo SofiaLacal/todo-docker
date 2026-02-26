@@ -1,0 +1,26 @@
+services:
+
+  backend:
+    build:
+      context: ./todo-back
+    ports:
+      - "8889:8889"
+    environment:
+      - MONGO_STRING=${MONGO_STRING}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./todo-front
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
