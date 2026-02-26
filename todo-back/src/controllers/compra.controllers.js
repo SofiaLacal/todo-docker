@@ -23,7 +23,6 @@ const createCompra = async (req, res) => {
     const compra = new Compra({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
-        precio: req.body.precio,
         cantidad: req.body.cantidad,
         categoria: req.body.categoria
     });

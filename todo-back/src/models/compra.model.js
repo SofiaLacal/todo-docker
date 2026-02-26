@@ -9,10 +9,6 @@ const compraSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    precio: {
-        type: Number,
-        required: true
-    },
     cantidad: {
         type: Number,
         required: true,
