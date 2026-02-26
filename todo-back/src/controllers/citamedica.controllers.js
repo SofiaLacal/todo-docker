@@ -1,19 +1,17 @@
 const CitaMedica = require('../models/citamedica.model');
 
-// GET todas las citas
 const getCitas = async (req, res) => {
     try {
-        const citas = await CitaMedica.find({ usuario: req.user.id }).sort({ fecha: 1 });
+        const citas = await CitaMedica.find().sort({ fecha: 1 });
         res.json(citas);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// GET una cita por ID
 const getOneCita = async (req, res) => {
     try {
-        const cita = await CitaMedica.findOne({ _id: req.params.id, usuario: req.user.id });
+        const cita = await CitaMedica.findById(req.params.id);
         if (!cita) return res.status(404).json({ message: 'Cita no encontrada' });
         res.json(cita);
     } catch (error) {
@@ -21,7 +19,6 @@ const getOneCita = async (req, res) => {
     }
 };
 
-// POST crear cita
 const createCita = async (req, res) => {
     const cita = new CitaMedica({
         titulo: req.body.titulo,
@@ -29,8 +26,7 @@ const createCita = async (req, res) => {
         especialidad: req.body.especialidad,
         fecha: req.body.fecha,
         lugar: req.body.lugar,
-        notas: req.body.notas,
-        usuario: req.user.id
+        notas: req.body.notas
     });
     try {
         const nuevaCita = await cita.save();
@@ -40,14 +36,9 @@ const createCita = async (req, res) => {
     }
 };
 
-// PATCH actualizar cita
 const updateCita = async (req, res) => {
     try {
-        const result = await CitaMedica.findOneAndUpdate(
-            { _id: req.params.id, usuario: req.user.id },
-            req.body,
-            { new: true }
-        );
+        const result = await CitaMedica.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!result) return res.status(404).json({ message: 'Cita no encontrada' });
         res.json(result);
     } catch (error) {
@@ -55,10 +46,9 @@ const updateCita = async (req, res) => {
     }
 };
 
-// DELETE eliminar cita
 const deleteCita = async (req, res) => {
     try {
-        const result = await CitaMedica.findOneAndDelete({ _id: req.params.id, usuario: req.user.id });
+        const result = await CitaMedica.findByIdAndDelete(req.params.id);
         if (!result) return res.status(404).json({ message: 'Cita no encontrada' });
         res.json({ message: 'Cita eliminada' });
     } catch (error) {

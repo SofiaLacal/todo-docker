@@ -1,19 +1,17 @@
 const Tarea = require('../models/tarea.model');
 
-// GET todas las tareas
 const getTareas = async (req, res) => {
     try {
-        const tareas = await Tarea.find({ usuario: req.user.id }).sort({ createdAt: -1 });
+        const tareas = await Tarea.find().sort({ createdAt: -1 });
         res.json(tareas);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-// GET una tarea por ID
 const getOneTarea = async (req, res) => {
     try {
-        const tarea = await Tarea.findOne({ _id: req.params.id, usuario: req.user.id });
+        const tarea = await Tarea.findById(req.params.id);
         if (!tarea) return res.status(404).json({ message: 'Tarea no encontrada' });
         res.json(tarea);
     } catch (error) {
@@ -21,14 +19,12 @@ const getOneTarea = async (req, res) => {
     }
 };
 
-// POST crear tarea
 const createTarea = async (req, res) => {
     const tarea = new Tarea({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         prioridad: req.body.prioridad,
-        fechaLimite: req.body.fechaLimite,
-        usuario: req.user.id
+        fechaLimite: req.body.fechaLimite
     });
     try {
         const nuevaTarea = await tarea.save();
@@ -38,14 +34,9 @@ const createTarea = async (req, res) => {
     }
 };
 
-// PATCH actualizar tarea
 const updateTarea = async (req, res) => {
     try {
-        const result = await Tarea.findOneAndUpdate(
-            { _id: req.params.id, usuario: req.user.id },
-            req.body,
-            { new: true }
-        );
+        const result = await Tarea.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!result) return res.status(404).json({ message: 'Tarea no encontrada' });
         res.json(result);
     } catch (error) {
@@ -53,10 +44,9 @@ const updateTarea = async (req, res) => {
     }
 };
 
-// DELETE eliminar tarea
 const deleteTarea = async (req, res) => {
     try {
-        const result = await Tarea.findOneAndDelete({ _id: req.params.id, usuario: req.user.id });
+        const result = await Tarea.findByIdAndDelete(req.params.id);
         if (!result) return res.status(404).json({ message: 'Tarea no encontrada' });
         res.json({ message: 'Tarea eliminada' });
     } catch (error) {

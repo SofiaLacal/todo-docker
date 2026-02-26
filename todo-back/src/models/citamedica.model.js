@@ -28,11 +28,6 @@ const citaMedicaSchema = new mongoose.Schema({
     completada: {
         type: Boolean,
         default: false
-    },
-    usuario: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
     }
 },
     {
