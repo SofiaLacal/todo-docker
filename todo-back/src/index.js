@@ -1,10 +1,11 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../..', '.env') });
 const mongoose = require('mongoose');
 const app = require('./server');
 
-const connectionUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017';
+const connectionUrl = process.env.MONGO_STRING;
 const dbName = 'to-do-list';
-const PORT = process.env.PORT || 8889;
+const PORT = process.env.PORT_BACK || process.env.PORT || 8889;
 
 mongoose
     .connect(connectionUrl, { dbName })
