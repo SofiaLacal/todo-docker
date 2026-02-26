@@ -17,9 +17,9 @@ function App() {
           Entra al enlace para acceder a las diferentes listas
         </p>
         <div className='contenedor-enlaces'>
-          <a className='enlace'href="">Compra</a>
-          <a className='enlace' href="">Tareas</a>
-          <a className='enlace' href="">Citas</a>
+          <a className='enlace'href="/compra">Compra</a>
+          <a className='enlace' href="/tareas">Tareas</a>
+          <a className='enlace' href="/citas">Citas</a>
         </div>
       </div>
     </>
