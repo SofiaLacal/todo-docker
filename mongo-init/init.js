@@ -17,11 +17,11 @@ db.tareas.insertMany([
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
-    }, 
+    },
     {
         titulo: 'Limpiar el garaje',
         descripcion: 'Organizar herramientas',
-        prioridad: 'Media',
+        prioridad: 'media',
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -29,7 +29,7 @@ db.tareas.insertMany([
     {
         titulo: 'Llamar al banco',
         descripcion: 'Consultar movimientos sospechosos',
-        prioridad: 'Alta',
+        prioridad: 'alta',
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -37,7 +37,7 @@ db.tareas.insertMany([
     {
         titulo: 'Preparar presentación',
         descripcion: 'Crear diapositivas y ensayar',
-        prioridad: 'Media',
+        prioridad: 'media',
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -65,11 +65,11 @@ db.compras.insertMany([
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
-    }, 
+    },
     {
         titulo: 'Pechuga de pollo',
         cantidad: 1,
-        categoria: 'Carnicería',
+        categoria: 'carnicería',
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -77,7 +77,7 @@ db.compras.insertMany([
     {
         titulo: 'Manzanas Fuji',
         cantidad: 6,
-        categoria: 'Frutas',
+        categoria: 'frutas',
         completada: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -90,7 +90,7 @@ db.citamedicas.insertMany([
         titulo: 'Revisión anual',
         doctor: 'Dr. García',
         especialidad: 'Medicina General',
-        fecha: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), 
+        fecha: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
         lugar: 'Centro de Salud',
         notas: 'Traer analíticas',
         completada: false,
@@ -119,7 +119,6 @@ db.citamedicas.insertMany([
         createdAt: new Date(),
         updatedAt: new Date()
     },
-
     {
         titulo: 'Revisión dental',
         doctor: 'Dr. Javier Martín',
@@ -131,7 +130,6 @@ db.citamedicas.insertMany([
         createdAt: new Date(),
         updatedAt: new Date()
     }
-
 ]);
 
 print('Datos iniciales insertados correctamente');
