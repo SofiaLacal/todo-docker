@@ -1,5 +1,7 @@
 FROM node:20-alpine
 
+LABEL maintainer=""
+
 WORKDIR /app
 
 COPY package*.json ./
