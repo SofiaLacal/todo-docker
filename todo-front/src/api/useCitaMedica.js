@@ -11,14 +11,18 @@ const useGetCitasMedicas = () => {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/citas-medicas`);
                 const data = await response.json();
                 setCitasMedicas(data);
+
             } catch (error) {
                 setError(error);
+
             } finally {
                 setLoading(false);
             }
         };
+
         fetchCitasMedicas();
     }, []);
+
     return { citasMedicas, loading, error };
 };
 
@@ -35,10 +39,13 @@ const useAddCitaMedica = () => {
                 },
                 body: JSON.stringify({ citaMedica }),
             });
+
             const data = await response.json();
             setCitaMedica(data);
+
         } catch (error) {
             setError(error);
+
         } finally {
             setLoading(false);
         }
@@ -59,10 +66,13 @@ const useUpdateCitaMedica = () => {
                 },
                 body: JSON.stringify({ citaMedica }),
             });
+
             const data = await response.json();
             setCitaMedica(data);
+
         } catch (error) {
             setError(error);
+            
         } finally {
             setLoading(false);
         }
@@ -79,8 +89,10 @@ const useDeleteCitaMedica = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/citas-medicas/${citaMedica.id}`, {
                 method: 'DELETE',
             });
+
         } catch (error) {
             setError(error);
+            
         } finally {
             setLoading(false);
         }

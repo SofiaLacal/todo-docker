@@ -17,8 +17,10 @@ const useGetTareas = () => {
                 setLoading(false);
             }
         };
+
         fetchTareas();
     }, []);
+
     return { tareas, loading, error };
 };
 
@@ -37,8 +39,10 @@ const useAddTarea = () => {
             });
             const data = await response.json();
             setTarea(data);
+
         } catch (error) {
             setError(error);
+
         } finally {
             setLoading(false);
         }
@@ -59,10 +63,13 @@ const useUpdateTarea = () => {
                 },
                 body: JSON.stringify({ tarea }),
             });
+
             const data = await response.json();
             setTarea(data);
+
         } catch (error) {
             setError(error);
+
         } finally {
             setLoading(false);
         }
@@ -79,8 +86,10 @@ const useDeleteTarea = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tareas/${tarea.id}`, {
                 method: 'DELETE',
             });
+
         } catch (error) {
             setError(error);
+            
         } finally {
             setLoading(false);
         }

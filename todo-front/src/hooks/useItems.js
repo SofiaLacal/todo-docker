@@ -12,8 +12,10 @@ const useItems = (endpoint) => {
             const response = await fetch(`${API_URL}/${endpoint}`);
             const data = await response.json();
             setItems(data);
+
         } catch (err) {
             setError(err);
+
         } finally {
             setLoading(false);
         }
@@ -30,7 +32,9 @@ const useItems = (endpoint) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
+
             fetchItems();
+
         } catch (err) {
             setError(err);
         }
@@ -43,7 +47,9 @@ const useItems = (endpoint) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ completada: !item.completada }),
             });
+
             fetchItems();
+
         } catch (err) {
             setError(err);
         }
@@ -53,6 +59,7 @@ const useItems = (endpoint) => {
         try {
             await fetch(`${API_URL}/${endpoint}/${id}`, { method: 'DELETE' });
             fetchItems();
+            
         } catch (err) {
             setError(err);
         }

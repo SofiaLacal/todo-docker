@@ -11,14 +11,18 @@ const useGetListaCompras = () => {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/compras`);
                 const data = await response.json();
                 setCompras(data);
+
             } catch (error) {
                 setError(error);
+
             } finally {
                 setLoading(false);
             }
         };
+
         fetchCompras();
     }, []);
+
     return { compras, loading, error };
 };
 
@@ -26,6 +30,7 @@ const useAddCompra = () => {
     const [compra, setCompra] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
     const handleAddCompra = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/compras`, {
@@ -35,10 +40,13 @@ const useAddCompra = () => {
                 },
                 body: JSON.stringify({ compra }),
             });
+
             const data = await response.json();
             setCompra(data);
+
         } catch (error) {
             setError(error);
+
         } finally {
             setLoading(false);
         }
@@ -59,10 +67,13 @@ const useUpdateCompra = () => {
                 },
                 body: JSON.stringify({ compra }),
             });
+
             const data = await response.json();
             setCompra(data);
+
         } catch (error) {
             setError(error);
+
         } finally {
             setLoading(false);
         }
@@ -79,8 +90,10 @@ const useDeleteCompra = () => {
             const response = await fetch(`${import.meta.env.VITE_API_URL}/compras/${compra.id}`, {
                 method: 'DELETE',
             });
+
         } catch (error) {
             setError(error);
+            
         } finally {
             setLoading(false);
         }

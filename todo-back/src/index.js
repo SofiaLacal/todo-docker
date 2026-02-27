@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 
-// Load .env from parent when running locally; in Docker use env vars from compose
 const envPath = path.join(__dirname, '../..', '.env');
 if (fs.existsSync(envPath)) {
     require('dotenv').config({ path: envPath });
@@ -20,6 +19,7 @@ mongoose
         console.log('DB conectada');
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
     })
+    
     .catch((err) => {
         console.error('Error conectando a la DB:', err);
         process.exit(1);

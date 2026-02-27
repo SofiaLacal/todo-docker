@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-LABEL maintainer=""
+LABEL maintainer = "Pablo, Javier y Sofía"
 
 WORKDIR /app
 
