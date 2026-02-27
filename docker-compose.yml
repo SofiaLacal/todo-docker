@@ -1,5 +1,14 @@
 services:
 
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
   backend:
     build:
       context: ./todo-back
@@ -8,8 +17,10 @@ services:
     ports:
       - "${PORT_BACK:-8889}:8889"
     environment:
-      - MONGO_STRING=${MONGO_STRING}
+      - MONGO_STRING=mongodb://mongo:27017
       - PORT_BACK=${PORT_BACK:-8889}
+    depends_on:
+      - mongo
     networks:
       - app-network
 
@@ -24,6 +35,9 @@ services:
       - backend
     networks:
       - app-network
+
+volumes:
+  mongo-data:
 
 networks:
   app-network:
