@@ -1,13 +1,11 @@
-FROM node:8
-
-LABEL maintainer=""
+FROM node:20-alpine
 
 WORKDIR /app
 
-ADD . /app
+COPY package*.json ./
+RUN npm ci --omit=dev
 
-RUN npm install 
-
+COPY . .
 EXPOSE 8889
 
-ENTRYPOINT ["node", "src/index.js"]
+CMD ["node", "src/index.js"]

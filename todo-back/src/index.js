@@ -1,9 +1,16 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../..', '.env') });
+const fs = require('fs');
+
+// Load .env from parent when running locally; in Docker use env vars from compose
+const envPath = path.join(__dirname, '../..', '.env');
+if (fs.existsSync(envPath)) {
+    require('dotenv').config({ path: envPath });
+}
+
 const mongoose = require('mongoose');
 const app = require('./server');
 
-const connectionUrl = process.env.MONGO_STRING;
+const connectionUrl = process.env.MONGO_STRING || 'mongodb://localhost:27017';
 const dbName = 'to-do-list';
 const PORT = process.env.PORT_BACK || process.env.PORT || 8889;
 

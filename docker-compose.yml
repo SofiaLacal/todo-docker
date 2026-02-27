@@ -3,19 +3,23 @@ services:
   backend:
     build:
       context: ./todo-back
+    env_file:
+      - .env
     ports:
-      - "8889:8889"
+      - "${PORT_BACK:-8889}:8889"
     environment:
       - MONGO_STRING=${MONGO_STRING}
-      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
+      - PORT_BACK=${PORT_BACK:-8889}
     networks:
       - app-network
 
   frontend:
     build:
       context: ./todo-front
+      args:
+        - VITE_API_URL=${VITE_API_URL:-}
     ports:
-      - "80:80"
+      - "${PORT_FRONT:-80}:80"
     depends_on:
       - backend
     networks:
