@@ -10,7 +10,7 @@ function App() {
         <img src={imagen} alt='Logo app' className='imagenLogo'/>
       </div>
 
-      <h2>Autores: Pablo Herrero, Javier Monzón, Sofía Lacal</h2>
+      <h3>Autores: Pablo Herrero, Javier Monzón, Sofía Lacal</h3>
       
       <div className="contenedor-principal">
         <p>

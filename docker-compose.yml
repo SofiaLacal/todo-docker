@@ -7,7 +7,6 @@ services:
       - "8889:8889"
     environment:
       - MONGO_STRING=${MONGO_STRING}
-      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
     networks:
       - app-network
 

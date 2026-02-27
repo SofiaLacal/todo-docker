@@ -1,7 +1,10 @@
+import './ItemCard.css'
+
 const ItemCard = ({ item, onToggle, onDelete, children }) => {
     return (
-        <li className={item.completada ? 'completada' : ''}>
+        <li className={`item-card ${item.completada ? 'completada' : ''}`}>
             <input
+                className='input-button'
                 type="checkbox"
                 checked={item.completada}
                 onChange={() => onToggle(item)}

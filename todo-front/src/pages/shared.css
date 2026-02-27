@@ -7,7 +7,6 @@
 }
 
 .page-container {
-  max-width: 600px;
   margin: 40px auto;
   padding: 0 20px;
 }
@@ -20,16 +19,24 @@ h1 {
 
 a {
   font-size: 0.85rem;
-  color: #888;
+  color: #3f3f3f;
   text-decoration: none;
   display: inline-block;
   margin-bottom: 24px;
 }
 
-a:hover { color: #333; }
+a:hover { color: #3f3f3f; }
+
+.tables-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 40px;
+}
 
 /* Lista */
 ul {
+  color:#3f3f3f;
+  width: 460px;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -44,7 +51,6 @@ li {
   background: #fff;
   border-radius: 10px;
   padding: 14px 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
 }
 
 li.completada { opacity: 0.5; }
@@ -55,6 +61,7 @@ li.completada strong { text-decoration: line-through; }
   display: flex;
   flex-direction: column;
   gap: 3px;
+  text-align: left; 
 }
 
 li strong {
@@ -64,19 +71,19 @@ li strong {
 
 li p {
   font-size: 0.82rem;
-  color: #888;
+  color: #3f3f3f;
   margin-top: 2px;
 }
 
 li span {
   font-size: 0.78rem;
-  color: #aaa;
+  color: #3f3f3f;
 }
 
 li button {
   background: none;
   border: none;
-  color: #ccc;
+  color: #ea1212;
   cursor: pointer;
   font-size: 0.8rem;
   padding: 4px 8px;
@@ -91,8 +98,10 @@ li button:hover {
 
 /* Formulario */
 form {
-  background: #fff;
+  background: #ade6de;
   border-radius: 10px;
+  width: 460px;
+  height: fit-content;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.07);
   display: flex;
@@ -101,8 +110,11 @@ form {
 }
 
 input, select {
+  background: aliceblue;
+  color: #3f3f3f;
   width: 100%;
   padding: 10px 12px;
+  margin-left: 0;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
@@ -114,8 +126,8 @@ input, select {
 input:focus, select:focus { border-color: #4f8ef7; }
 
 form button[type="submit"] {
-  background: #4f8ef7;
-  color: #fff;
+  background: #51acd6;
+  color: #3f3f3f;
   border: none;
   border-radius: 8px;
   padding: 11px;
@@ -129,4 +141,4 @@ form button[type="submit"] {
 
 form button[type="submit"]:hover { background: #3a7ae0; }
 
-p { color: #888; font-size: 0.9rem; }
+p { color: #ffffff; font-size: 0.9rem; }
